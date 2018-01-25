@@ -1,0 +1,129 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://player.gd" type="Script" id=1]
+[ext_resource path="res://selected.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://steering_player.gd" type="Script" id=4]
+[ext_resource path="res://hand.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 23.2047
+
+[node name="main" type="Node2D" index="0"]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="player" type="KinematicBody2D" parent="." index="0"]
+
+position = Vector2( 222.36, 203.627 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+max_speed = 200.0
+
+[node name="light" type="Light2D" parent="player" index="0"]
+
+enabled = true
+editor_only = false
+texture = ExtResource( 2 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.171875, 1, 0, 1 )
+energy = 1.0
+mode = 0
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+
+[node name="Sprite" type="Sprite" parent="player" index="1"]
+
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" index="2"]
+
+shape = SubResource( 1 )
+
+[node name="steering_player" type="KinematicBody2D" parent="." index="1"]
+
+position = Vector2( 513.138, 161.273 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 4 )
+max_speed = 500.0
+max_steer = 100.0
+
+[node name="light" type="Light2D" parent="steering_player" index="0"]
+
+position = Vector2( -23.8831, 7.29762 )
+enabled = true
+editor_only = false
+texture = ExtResource( 2 )
+offset = Vector2( 0, 0 )
+texture_scale = 1.0
+color = Color( 0.171875, 1, 0, 1 )
+energy = 1.0
+mode = 2
+range_height = 0.0
+range_z_min = -1024
+range_z_max = 1024
+range_layer_min = 0
+range_layer_max = 0
+range_item_cull_mask = 1
+shadow_enabled = false
+shadow_color = Color( 0, 0, 0, 0 )
+shadow_buffer_size = 2048
+shadow_gradient_length = 0.0
+shadow_filter = 0
+shadow_filter_smooth = 0.0
+shadow_item_cull_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="steering_player" index="1"]
+
+position = Vector2( -23.8832, 7.29762 )
+rotation = 1.5708
+build_mode = 0
+polygon = PoolVector2Array( -7.84694, -31.5906, -11.9063, -29.5029, -11.2104, -11.0618, -15.7337, -10.9457, -19.3291, 3.436, -9.35468, 32.5475, 12.5659, 32.4315, 19.8728, 11.2068, 19.2929, -5.84253, -2.74373, -15.585, -3.09167, -30.7787 )
+
+[node name="Sprite" type="Sprite" parent="steering_player" index="2"]
+
+rotation = 1.5708
+scale = Vector2( 0.335427, 0.335427 )
+texture = ExtResource( 5 )
+offset = Vector2( 22.6611, 75.2489 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="rectangle_selector" type="NinePatchRect" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+
